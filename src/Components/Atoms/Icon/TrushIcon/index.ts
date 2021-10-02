@@ -1,0 +1,1 @@
+export { TrushIcon } from "./TrushIcon";
