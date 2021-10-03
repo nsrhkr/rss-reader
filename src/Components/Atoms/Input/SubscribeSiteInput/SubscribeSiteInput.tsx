@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+type SubscribeSiteInputProps = {
+  value: string;
+  onChange: any;
+};
+
 const Input = styled.input`
   width: 250px;
   height: 40px;
@@ -13,6 +18,7 @@ const Input = styled.input`
   }
 `;
 
-export const SubscribeSiteInput = () => {
-  return <Input type="text" placeholder="RSS URL" />;
+export const SubscribeSiteInput = (props: SubscribeSiteInputProps) => {
+  const { value, onChange } = props;
+  return <Input type="url" value={value} placeholder="RSS URL" pattern="https://.*" onChange={onChange} required />;
 };

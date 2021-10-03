@@ -1,6 +1,11 @@
+import React from "react";
 import styled from "styled-components";
 
-const Button = styled.button`
+type SubscribeSiteAddButtonProps = {
+  onSubmit: React.FormEventHandler<HTMLFormElement | HTMLInputElement>;
+};
+
+const Button = styled.input`
   width: 50px;
   height: 40px;
   border-radius: 4px;
@@ -13,6 +18,7 @@ const Button = styled.button`
   }
 `;
 
-export const SubscribeSiteAddButton = () => {
-  return <Button>追加</Button>;
+export const SubscribeSiteAddButton = (props: SubscribeSiteAddButtonProps) => {
+  const { onSubmit } = props;
+  return <Button type="submit" value="追加" onSubmit={onSubmit} />;
 };

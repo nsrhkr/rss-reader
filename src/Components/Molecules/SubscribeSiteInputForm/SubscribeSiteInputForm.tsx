@@ -2,8 +2,9 @@ import styled from "styled-components";
 
 import { SubscribeSiteAddButton } from "../../Atoms/Button/SubscribeSiteAddButton";
 import { SubscribeSiteInput } from "../../Atoms/Input/SubscribeSiteInput";
+import { useInputRSSURL } from "../../../Hooks/useInputRSSURL";
 
-const SubscribeSiteInputFormArea = styled.div`
+const SubscribeSiteInputFormArea = styled.form`
   display: flex;
 `;
 
@@ -12,12 +13,13 @@ const SubscribeSiteInputArea = styled.div`
 `;
 
 export const SubscribeSiteInputForm = () => {
+  const { value, hundleChange, submit } = useInputRSSURL();
   return (
-    <SubscribeSiteInputFormArea>
+    <SubscribeSiteInputFormArea onSubmit={submit}>
       <SubscribeSiteInputArea>
-        <SubscribeSiteInput />
+        <SubscribeSiteInput value={value} onChange={hundleChange} />
       </SubscribeSiteInputArea>
-      <SubscribeSiteAddButton />
+      <SubscribeSiteAddButton onSubmit={submit} />
     </SubscribeSiteInputFormArea>
   );
 };
