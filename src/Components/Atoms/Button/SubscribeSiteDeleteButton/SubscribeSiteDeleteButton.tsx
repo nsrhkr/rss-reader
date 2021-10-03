@@ -1,6 +1,11 @@
 import styled from "styled-components";
+import { useSubscribeSite } from "../../../../Hooks/useSubscribeSite";
 
 import { TrushIcon } from "../../Icon/TrushIcon";
+
+type SubscribeSiteDeleteButtonProps = {
+  id: string;
+};
 
 const Button = styled.button`
   width: 36px;
@@ -14,9 +19,12 @@ const Button = styled.button`
   }
 `;
 
-export const SubscribeSiteDeleteButton = () => {
+export const SubscribeSiteDeleteButton = (props: SubscribeSiteDeleteButtonProps) => {
+  const { id } = props;
+  const { deleteSubscribeSite } = useSubscribeSite();
+
   return (
-    <Button>
+    <Button onClick={() => deleteSubscribeSite(id)}>
       <TrushIcon />
     </Button>
   );

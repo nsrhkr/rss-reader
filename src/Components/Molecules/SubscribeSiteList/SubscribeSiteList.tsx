@@ -7,7 +7,8 @@ const SubscribeSiteListArea = styled.div`
   display: flex;
   flex-direction: column;
   width: 350px;
-  min-height: calc(100vh - 160px);
+  box-sizing: border-box;
+  padding-bottom: 20px;
 `;
 
 export const SubscribeSiteList = () => {
@@ -15,7 +16,7 @@ export const SubscribeSiteList = () => {
   return (
     <SubscribeSiteListArea>
       {siteList.map((item) => {
-        return <SubscribeSiteItem key={item.id} domainName={item.domainName} name={item.name} />;
+        return <SubscribeSiteItem key={item.id} id={item.id} domainName={item.domainName} name={item.name} />;
       })}
     </SubscribeSiteListArea>
   );

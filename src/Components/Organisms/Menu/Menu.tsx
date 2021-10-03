@@ -1,5 +1,7 @@
 import styled from "styled-components";
+import { useSubscribeSiteContext } from "../../../Contexts/SubscribeSiteContext";
 
+import { ResetButton } from "../../Atoms/Button/ResetButton";
 import { SiteName } from "../../Atoms/SiteName";
 import { SubscribeSiteInputForm } from "../../Molecules/SubscribeSiteInputForm";
 import { SubscribeSiteList } from "../../Molecules/SubscribeSiteList";
@@ -28,7 +30,17 @@ const RSSInputFormArea = styled.div`
   padding-left: 10px;
 `;
 
+const ResetButtonArea = styled.div`
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  width: 350px;
+  height: 60px;
+  padding-left: 10px;
+`;
+
 export const Menu = () => {
+  const list = useSubscribeSiteContext();
   return (
     <MenuArea>
       <SiteNameArea>
@@ -38,6 +50,11 @@ export const Menu = () => {
         <SubscribeSiteInputForm />
       </RSSInputFormArea>
       <SubscribeSiteList />
+      {list.length === 0 ? null : (
+        <ResetButtonArea>
+          <ResetButton />
+        </ResetButtonArea>
+      )}
     </MenuArea>
   );
 };

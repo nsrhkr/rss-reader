@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { SubscribeSiteDeleteButton } from "../../Atoms/Button/SubscribeSiteDeleteButton";
 
 type RSSItemProps = {
+  id: string;
   name: string;
   domainName: string;
 };
@@ -28,13 +29,13 @@ const SubscribeSiteName = styled.div`
 `;
 
 export const SubscribeSiteItem = memo((props: RSSItemProps) => {
-  const { domainName, name } = props;
+  const { id, domainName, name } = props;
 
   return (
     <SubscribeSiteItemArea>
       <Favicon src={`https://www.google.com/s2/favicons?domain=${domainName}`} />
       <SubscribeSiteName>{name}</SubscribeSiteName>
-      <SubscribeSiteDeleteButton />
+      <SubscribeSiteDeleteButton id={id} />
     </SubscribeSiteItemArea>
   );
 });

@@ -1,22 +1,22 @@
 import { fetchRSS, RSS2json } from "../../api";
 import { RSSItem, useRSSContext, useSetRSSContext } from "../../Contexts/RSSContext";
-import { SubscribeSite, useSubscribeSiteContext } from "../../Contexts/SubscribeSiteContext";
+import { SubscribeSite } from "../../Contexts/SubscribeSiteContext";
 import { dateToString } from "../../utils/date";
 
+// RSSデータのHook
 export const useRSSData = () => {
-  const siteList = useSubscribeSiteContext();
   const RSSList = useRSSContext();
   const setRSSList = useSetRSSContext();
 
   // 購読サイト一覧からRSSを取得
-  const getRSSData = async () => {
-    const newList = await asyncLoop();
+  const getRSSData = async (siteList: SubscribeSite[]) => {
+    const newList = await asyncLoop(siteList);
     newList.sort(compare);
     setRSSList(newList);
   };
 
   // RSSを非同期で取得
-  const asyncLoop = async () => {
+  const asyncLoop = async (siteList: SubscribeSite[]) => {
     let newList: Array<RSSItem> = [];
     await Promise.all(
       siteList.map(async (siteItem) => {
