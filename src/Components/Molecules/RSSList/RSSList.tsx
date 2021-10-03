@@ -1,4 +1,8 @@
 import styled from "styled-components";
+import { v4 as uuidv4 } from "uuid";
+
+import { RSSItem } from "../RSSItem";
+import { useRSSContext } from "../../../Contexts/RSSContext";
 
 const ListArea = styled.div`
   width: 100%;
@@ -11,5 +15,12 @@ const ListArea = styled.div`
 `;
 
 export const RSSList = () => {
-  return <ListArea></ListArea>;
+  const RSSDataList = useRSSContext();
+  return (
+    <ListArea>
+      {RSSDataList.map((item) => {
+        return <RSSItem key={uuidv4()} title={item.title} url={item.url} strDate={item.strDate} description={item.description} />;
+      })}
+    </ListArea>
+  );
 };

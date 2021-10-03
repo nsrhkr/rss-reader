@@ -1,13 +1,15 @@
 import { v4 as uuidv4 } from "uuid";
 
 import { RSS2json } from "../../api";
+import { useRSSData } from "../useRSSData";
 import { SubscribeSite, useSubscribeSiteContext, useSetSubscribeSiteContext } from "../../Contexts/SubscribeSiteContext";
 
 const SUBSCRIBE_SITE = "subscribeSite";
 
 export const useSubscribeSite = () => {
-  const siteData = useSubscribeSiteContext();
-  const setSiteData = useSetSubscribeSiteContext();
+  const siteList = useSubscribeSiteContext();
+  const setSiteList = useSetSubscribeSiteContext();
+  const { mergeRSSList } = useRSSData();
 
   // 配信サイトをローカルストレージから取得
   const initSubscribeSite = () => {
@@ -15,7 +17,7 @@ export const useSubscribeSite = () => {
       const value = localStorage.getItem(SUBSCRIBE_SITE);
       if (value !== null) {
         const json = JSON.parse(value);
-        setSiteData(json);
+        setSiteList(json);
       }
     } catch (error) {
       console.log(error);
@@ -26,7 +28,7 @@ export const useSubscribeSite = () => {
   const addSubscribeSite = (url: string, json: RSS2json) => {
     let isRegistered = false;
 
-    siteData.forEach((item) => {
+    siteList.forEach((item) => {
       if (item.url === url) {
         isRegistered = true;
       }
@@ -47,12 +49,14 @@ export const useSubscribeSite = () => {
       newSiteData.name = json.feed.title;
       newSiteData.domainName = new URL(url).origin;
       newSiteData.url = url;
-      setSiteData([...siteData, newSiteData]);
-      // localStorage.setItem(SUBSCRIBE_SITE, JSON.stringify(siteData));
-      console.log(newSiteData);
+      console.log([...siteList, newSiteData]);
+      setSiteList([...siteList, newSiteData]);
+      mergeRSSList(newSiteData, json);
+      localStorage.setItem(SUBSCRIBE_SITE, JSON.stringify(siteList));
     }
   };
 
+  // 配信サイト情報をlocalStorageから削除
   const deleteSubscribeSite = () => {};
 
   return { initSubscribeSite, addSubscribeSite, deleteSubscribeSite };

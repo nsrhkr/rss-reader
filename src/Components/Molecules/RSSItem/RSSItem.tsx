@@ -3,15 +3,15 @@ import styled from "styled-components";
 type RSSItemProps = {
   title: string;
   url: string;
-  date: string;
+  strDate: string;
   description: string;
 };
 
 const ItemArea = styled.div`
   box-sizing: border-box;
   width: 100%;
-  height: 160px;
-  padding: 18px 10px;
+  height: 200px;
+  padding: 20px;
   border: 1px solid #c0c0c0;
   border-radius: 4px;
 `;
@@ -53,7 +53,7 @@ const Description = styled.p`
 `;
 
 export const RSSItem = (props: RSSItemProps) => {
-  const { title, url, date, description } = props;
+  const { title, url, strDate, description } = props;
   return (
     <ItemArea>
       <Title>{title}</Title>
@@ -61,7 +61,7 @@ export const RSSItem = (props: RSSItemProps) => {
         <LinkArea>
           <a href={url}>元記事</a>
         </LinkArea>
-        <DateArea>{date}</DateArea>
+        <DateArea>{strDate}</DateArea>
       </LinkAndDateArea>
       <Description>{description}</Description>
     </ItemArea>

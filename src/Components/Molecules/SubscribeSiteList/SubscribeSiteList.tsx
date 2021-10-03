@@ -5,6 +5,7 @@ import { useSubscribeSiteContext } from "../../../Contexts/SubscribeSiteContext"
 
 const SubscribeSiteListArea = styled.div`
   display: flex;
+  flex-direction: column;
   width: 350px;
   min-height: calc(100vh - 160px);
 `;

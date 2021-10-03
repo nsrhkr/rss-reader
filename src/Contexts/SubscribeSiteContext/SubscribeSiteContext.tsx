@@ -16,11 +16,11 @@ export const useSetSubscribeSiteContext = () => useContext(setSubscribeSiteConte
 
 export const SubscribeSiteProvider = (props: { children: ReactNode }) => {
   const { children } = props;
-  const [siteData, setSiteData] = useState<Array<SubscribeSite>>([]);
+  const [siteList, setSiteList] = useState<Array<SubscribeSite>>([]);
 
   return (
-    <SubscribeSiteContext.Provider value={siteData}>
-      <setSubscribeSiteContext.Provider value={setSiteData}>{children}</setSubscribeSiteContext.Provider>
+    <SubscribeSiteContext.Provider value={siteList}>
+      <setSubscribeSiteContext.Provider value={setSiteList}>{children}</setSubscribeSiteContext.Provider>
     </SubscribeSiteContext.Provider>
   );
 };
