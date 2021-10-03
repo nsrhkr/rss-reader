@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-// import { SubscribeSiteItem } from "../SubscribeSiteItem";
+import { SubscribeSiteItem } from "../SubscribeSiteItem";
+import { useSubscribeSiteContext } from "../../../Contexts/SubscribeSiteContext";
 
 const SubscribeSiteListArea = styled.div`
   display: flex;
@@ -9,5 +10,12 @@ const SubscribeSiteListArea = styled.div`
 `;
 
 export const SubscribeSiteList = () => {
-  return <SubscribeSiteListArea></SubscribeSiteListArea>;
+  const siteList = useSubscribeSiteContext();
+  return (
+    <SubscribeSiteListArea>
+      {siteList.map((item) => {
+        return <SubscribeSiteItem key={item.id} domainName={item.domainName} name={item.name} />;
+      })}
+    </SubscribeSiteListArea>
+  );
 };

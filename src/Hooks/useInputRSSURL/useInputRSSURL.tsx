@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 
+import { fetchRSS } from "../../api";
+import { useSubscribeSite } from "../useSubscribeSite";
+
 export const useInputRSSURL = () => {
   const [value, setValue] = useState("");
+  const { addSubscribeSite } = useSubscribeSite();
 
   // 入力値を更新
   const hundleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -12,8 +16,7 @@ export const useInputRSSURL = () => {
   const submit: React.FormEventHandler<HTMLFormElement | HTMLInputElement> = (event: React.FormEvent<HTMLFormElement | HTMLInputElement>) => {
     event.preventDefault();
     if (checkXml(value)) {
-      console.log(value);
-      // addSite(url);
+      addSite(value);
       setValue("");
     }
   };
@@ -24,10 +27,15 @@ export const useInputRSSURL = () => {
   };
 
   // 購読サイトを追加
-  //   const addSite = (url) => {
-  //     const newSite = { key: nanoid(), taskName: taskName, done: false };
-  //     setSite([newSite, ...site]);
-  //   };
+  const addSite = async (url: string) => {
+    try {
+      const response = await fetchRSS(url);
+      const json = await response.json();
+      addSubscribeSite(url, json);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return { value, hundleChange, submit };
 };

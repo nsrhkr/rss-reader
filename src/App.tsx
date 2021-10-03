@@ -1,8 +1,13 @@
 import "./App.css";
 import { TopPage } from "./Components/Pages/Top";
+import { SubscribeSiteProvider } from "./Contexts/SubscribeSiteContext";
 
 function App() {
-  return <TopPage />;
+  return (
+    <SubscribeSiteProvider>
+      <TopPage />
+    </SubscribeSiteProvider>
+  );
 }
 
 export default App;
