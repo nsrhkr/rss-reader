@@ -4,6 +4,7 @@ import { Main } from "../../Organisms/Main";
 
 const All = styled.div`
   display: flex;
+  height: 100%;
 `;
 
 export const TopTemplate = () => {

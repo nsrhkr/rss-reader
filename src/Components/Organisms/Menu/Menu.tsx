@@ -9,7 +9,8 @@ import { SubscribeSiteList } from "../../Molecules/SubscribeSiteList";
 const MenuArea = styled.div`
   background-color: #f2f2f2;
   width: 350px;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto;
 `;
 
 const SiteNameArea = styled.div`
