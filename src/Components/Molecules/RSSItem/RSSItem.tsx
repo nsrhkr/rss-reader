@@ -14,22 +14,6 @@ const ItemArea = styled.div`
   padding: 20px;
   border: 1px solid #c0c0c0;
   border-radius: 4px;
-  animation-name: fadeup;
-  animation-duration: 1.5s;
-  animation-timing-function: ease;
-  animation-iteration-count: 1;
-
-  @keyframes fadeup {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 `;
 
 const Title = styled.div`

@@ -15,22 +15,6 @@ const SubscribeSiteItemArea = styled.div`
   width: 350px;
   height: 50px;
   padding-left: 10px;
-  animation-name: fadeup;
-  animation-duration: 1.5s;
-  animation-timing-function: ease;
-  animation-iteration-count: 1;
-
-  @keyframes fadeup {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
 `;
 
 const Favicon = styled.img`
