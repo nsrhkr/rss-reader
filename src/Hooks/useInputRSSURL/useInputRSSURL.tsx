@@ -16,15 +16,10 @@ export const useInputRSSURL = () => {
   // 入力値を登録
   const submit: React.FormEventHandler<HTMLFormElement | HTMLInputElement> = (event: React.FormEvent<HTMLFormElement | HTMLInputElement>) => {
     event.preventDefault();
-    if (checkXml(value)) {
+    if (value.toLowerCase().includes("rss")) {
       addSite(value);
       setValue("");
     }
-  };
-
-  // xmlのパスかチェック
-  const checkXml = (url: string): boolean => {
-    return /.+\.xml/.test(url);
   };
 
   // 購読サイトを追加
