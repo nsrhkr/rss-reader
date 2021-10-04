@@ -28,6 +28,7 @@ const SubscribeSiteName = styled.div`
   font-size: 14px;
 `;
 
+// 購読するサイト
 export const SubscribeSiteItem = memo((props: RSSItemProps) => {
   const { id, domainName, name } = props;
 

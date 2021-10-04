@@ -40,6 +40,7 @@ const ResetButtonArea = styled.div`
   padding-left: 10px;
 `;
 
+// メニュー
 export const Menu = () => {
   const list = useSubscribeSiteContext();
   return (

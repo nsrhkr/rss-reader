@@ -14,6 +14,7 @@ const ListArea = styled.div`
   }
 `;
 
+// 配信されたコンテンツ一覧
 export const RSSList = () => {
   const RSSDataList = useRSSContext();
   return (

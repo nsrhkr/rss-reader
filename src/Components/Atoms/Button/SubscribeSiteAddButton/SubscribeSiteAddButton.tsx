@@ -18,6 +18,7 @@ const Button = styled.input`
   }
 `;
 
+// 購読サイト追加ボタン
 export const SubscribeSiteAddButton = (props: SubscribeSiteAddButtonProps) => {
   const { onSubmit } = props;
   return <Button type="submit" value="追加" onSubmit={onSubmit} />;

@@ -5,6 +5,7 @@ const Font = styled.div`
   font-weight: bold;
 `;
 
+// サイト名
 export const SiteName = () => {
   return <Font>RSS Reader</Font>;
 };

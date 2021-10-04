@@ -19,6 +19,7 @@ const Button = styled.button`
   }
 `;
 
+// 購読サイト削除ボタン
 export const SubscribeSiteDeleteButton = (props: SubscribeSiteDeleteButtonProps) => {
   const { id } = props;
   const { deleteSubscribeSite } = useSubscribeSite();

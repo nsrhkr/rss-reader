@@ -15,6 +15,7 @@ const Button = styled.button`
   }
 `;
 
+// リセットボタン
 export const ResetButton = () => {
   const { resetSubscribeSite } = useSubscribeSite();
   return <Button onClick={() => resetSubscribeSite()}>リセット</Button>;

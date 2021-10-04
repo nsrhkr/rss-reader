@@ -11,6 +11,7 @@ const SubscribeSiteListArea = styled.div`
   padding-bottom: 20px;
 `;
 
+// 購読するサイト一覧
 export const SubscribeSiteList = () => {
   const siteList = useSubscribeSiteContext();
   return (

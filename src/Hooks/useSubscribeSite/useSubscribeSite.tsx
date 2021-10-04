@@ -8,7 +8,7 @@ import { useSetRSSContext } from "../../Contexts/RSSContext";
 // ローカルストレージに持つキー名
 const SUBSCRIBE_SITE = "subscribeSite";
 
-// 購読サイト一覧のHook
+// 購読サイト一覧のフック
 export const useSubscribeSite = () => {
   const siteList = useSubscribeSiteContext();
   const setSiteList = useSetSubscribeSiteContext();

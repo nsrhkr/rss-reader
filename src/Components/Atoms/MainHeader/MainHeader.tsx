@@ -6,6 +6,7 @@ const Header = styled.h1`
   color: #a9a9a9;
 `;
 
+// 見出し
 export const MainHeader = () => {
   return <Header>新着記事</Header>;
 };

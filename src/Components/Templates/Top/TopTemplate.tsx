@@ -7,6 +7,7 @@ const All = styled.div`
   height: 100%;
 `;
 
+// テンプレート
 export const TopTemplate = () => {
   return (
     <All>

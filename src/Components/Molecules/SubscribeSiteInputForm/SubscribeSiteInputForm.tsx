@@ -12,6 +12,7 @@ const SubscribeSiteInputArea = styled.div`
   padding-right: 4px;
 `;
 
+// 購読するサイトのURLの入力フォーム
 export const SubscribeSiteInputForm = () => {
   const { value, hundleChange, submit } = useInputRSSURL();
   return (

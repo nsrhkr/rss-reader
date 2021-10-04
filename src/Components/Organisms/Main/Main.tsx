@@ -9,6 +9,7 @@ const MainArea = styled.div`
   padding: 0 20px 0 40px;
 `;
 
+// メインコンテンツ
 export const Main = () => {
   return (
     <MainArea>

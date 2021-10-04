@@ -3,7 +3,7 @@ import { RSSItem, useRSSContext, useSetRSSContext } from "../../Contexts/RSSCont
 import { SubscribeSite } from "../../Contexts/SubscribeSiteContext";
 import { dateToString } from "../../utils/date";
 
-// RSSデータのHook
+// RSSデータのフック
 export const useRSSData = () => {
   const RSSList = useRSSContext();
   const setRSSList = useSetRSSContext();
@@ -15,7 +15,7 @@ export const useRSSData = () => {
     setRSSList(newList);
   };
 
-  // RSSを非同期で取得
+  // 購読サイト配列を回しながらfetch
   const asyncLoop = async (siteList: SubscribeSite[]) => {
     let newList: Array<RSSItem> = [];
     await Promise.all(
@@ -33,7 +33,7 @@ export const useRSSData = () => {
     return newList;
   };
 
-  // rss2jsonから受け取ったjsonから表示用の配列を作成
+  // rss2jsonから受け取ったjsonから表示用のRSSデータ配列を作成
   const formatList = (siteItem: SubscribeSite, json: RSS2json) => {
     let newList: Array<RSSItem> = [];
     console.log(json.items);

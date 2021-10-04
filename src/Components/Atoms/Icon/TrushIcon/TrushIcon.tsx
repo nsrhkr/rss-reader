@@ -7,6 +7,7 @@ const TrushImage = styled.img`
   height: 16px;
 `;
 
+// ゴミ箱アイコン
 export const TrushIcon = () => {
   return <TrushImage src={trush} alt="削除" />;
 };

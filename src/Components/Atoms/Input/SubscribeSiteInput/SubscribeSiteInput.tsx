@@ -18,6 +18,7 @@ const Input = styled.input`
   }
 `;
 
+// URL テキスト入力
 export const SubscribeSiteInput = (props: SubscribeSiteInputProps) => {
   const { value, onChange } = props;
   return <Input type="url" value={value} placeholder="RSS URL" pattern="https://.*" onChange={onChange} required />;

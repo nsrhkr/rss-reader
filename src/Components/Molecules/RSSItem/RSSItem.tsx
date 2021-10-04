@@ -52,6 +52,7 @@ const Description = styled.p`
   color: #696969;
 `;
 
+// 配信されたコンテンツ
 export const RSSItem = (props: RSSItemProps) => {
   const { title, url, strDate, description } = props;
   return (

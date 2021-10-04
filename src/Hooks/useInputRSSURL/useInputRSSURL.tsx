@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { fetchRSS } from "../../api";
 import { useSubscribeSite } from "../useSubscribeSite";
 
+// 入力されたRSS URLのフック
 export const useInputRSSURL = () => {
   const [value, setValue] = useState("");
   const { addSubscribeSite } = useSubscribeSite();
