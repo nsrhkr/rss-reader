@@ -22,7 +22,7 @@ export const useInputRSSURL = () => {
   // 入力値を登録
   const submit: React.FormEventHandler<HTMLFormElement | HTMLInputElement> = (event: React.FormEvent<HTMLFormElement | HTMLInputElement>) => {
     event.preventDefault();
-    if (value.toLowerCase().includes("rss")) {
+    if (value !== "") {
       addSite(value);
       setValue("");
     }
