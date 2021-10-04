@@ -1,1 +1,1 @@
-export { RSSItem } from "./RSSItem";
+export { RSSItem, RSSItemSkeleton } from "./RSSItem";

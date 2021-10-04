@@ -5,14 +5,21 @@ import { dateToString } from "../../utils/date";
 
 // RSSデータのフック
 export const useRSSData = () => {
-  const RSSList = useRSSContext();
+  const RSSContext = useRSSContext();
   const setRSSList = useSetRSSContext();
 
   // 購読サイト一覧からRSSを取得
   const getRSSData = async (siteList: SubscribeSite[]) => {
+    setRSSList({
+      RSSItemList: [],
+      loading: true,
+    });
     const newList = await asyncLoop(siteList);
     newList.sort(compare);
-    setRSSList(newList);
+    setRSSList({
+      RSSItemList: newList,
+      loading: false,
+    });
   };
 
   // 購読サイト配列を回しながらfetch
@@ -25,6 +32,10 @@ export const useRSSData = () => {
           const json: RSS2json = await response.json();
           newList = newList.concat(formatList(siteItem, json));
         } catch (error) {
+          setRSSList({
+            RSSItemList: RSSContext.RSSItemList,
+            loading: false,
+          });
           alert("RSSの読み込みに失敗しました");
         }
       })
@@ -58,15 +69,29 @@ export const useRSSData = () => {
 
   // RSSデータ配列に新たなサイトのデータをマージ
   const mergeRSSList = (siteItem: SubscribeSite, json: RSS2json) => {
-    let newList = RSSList.concat(formatList(siteItem, json));
+    setRSSList({
+      RSSItemList: RSSContext.RSSItemList,
+      loading: true,
+    });
+    let newList = RSSContext.RSSItemList.concat(formatList(siteItem, json));
     newList.sort(compare);
-    setRSSList(newList);
+    setRSSList({
+      RSSItemList: newList,
+      loading: false,
+    });
   };
 
   // RSSデータ配列から指定されたサイトのRSSデータを削除
   const deleteRSSData = (siteId: string) => {
-    const newList = RSSList.filter((item) => item.siteId !== siteId);
-    setRSSList(newList);
+    setRSSList({
+      RSSItemList: RSSContext.RSSItemList,
+      loading: true,
+    });
+    const newList = RSSContext.RSSItemList.filter((item) => item.siteId !== siteId);
+    setRSSList({
+      RSSItemList: newList,
+      loading: false,
+    });
   };
 
   // RSSデータ配列を日付が新しい順にソートする比較関数

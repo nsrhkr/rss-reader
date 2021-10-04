@@ -1,2 +1,2 @@
-export { useSubscribeSiteContext, useSetSubscribeSiteContext, SubscribeSiteProvider } from "./SubscribeSiteContext";
-export type { SubscribeSite } from "./SubscribeSiteContext";
+export { SubscribeSiteContextInit, useSubscribeSiteContext, useSetSubscribeSiteContext, SubscribeSiteProvider } from "./SubscribeSiteContext";
+export type { SubscribeSite, SubscribeSiteContextType } from "./SubscribeSiteContext";

@@ -9,18 +9,28 @@ export type RSSItem = {
   description: string;
 };
 
-// RSSデータ配列のコンテキスト
-const RSSContext = createContext<Array<RSSItem>>([]);
+export type RSSContextType = {
+  RSSItemList: Array<RSSItem>;
+  loading: boolean;
+};
+
+export const RSSContextInit: RSSContextType = {
+  RSSItemList: [],
+  loading: false,
+};
+
+// RSSデータのコンテキスト
+const RSSContext = createContext<RSSContextType>(RSSContextInit);
 export const useRSSContext = () => useContext(RSSContext);
 
-// RSSデータ配列のコンテキストのセッター
-const setRSSContext = createContext<Dispatch<SetStateAction<Array<RSSItem>>>>(() => {});
+// RSSデータのコンテキストのセッター
+const setRSSContext = createContext<Dispatch<SetStateAction<RSSContextType>>>(() => {});
 export const useSetRSSContext = () => useContext(setRSSContext);
 
 // プロバイダ
 export const RSSProvider = (props: { children: ReactNode }) => {
   const { children } = props;
-  const [RSSDataList, setRSSDataList] = useState<Array<RSSItem>>([]);
+  const [RSSDataList, setRSSDataList] = useState<RSSContextType>(RSSContextInit);
 
   return (
     <RSSContext.Provider value={RSSDataList}>

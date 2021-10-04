@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Skeleton from "react-loading-skeleton";
 
 type RSSItemProps = {
   title: string;
@@ -65,6 +66,28 @@ export const RSSItem = (props: RSSItemProps) => {
         <DateArea>{strDate}</DateArea>
       </LinkAndDateArea>
       <Description>{description}</Description>
+    </ItemArea>
+  );
+};
+
+// 読み込み中に表示するスケルトン
+export const RSSItemSkeleton = () => {
+  return (
+    <ItemArea>
+      <Title>
+        <Skeleton />
+      </Title>
+      <LinkAndDateArea>
+        <LinkArea>
+          <Skeleton width={42} />
+        </LinkArea>
+        <DateArea>
+          <Skeleton width={120} />
+        </DateArea>
+      </LinkAndDateArea>
+      <Description>
+        <Skeleton count={4} />
+      </Description>
     </ItemArea>
   );
 };

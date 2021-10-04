@@ -7,18 +7,28 @@ export type SubscribeSite = {
   domainName: string;
 };
 
+export type SubscribeSiteContextType = {
+  SubscribeSiteList: Array<SubscribeSite>;
+  loading: boolean;
+};
+
+export const SubscribeSiteContextInit = {
+  SubscribeSiteList: [],
+  loading: false,
+};
+
 // 購読するサイトの配列のコンテキスト
-const SubscribeSiteContext = createContext<Array<SubscribeSite>>([]);
+const SubscribeSiteContext = createContext<SubscribeSiteContextType>(SubscribeSiteContextInit);
 export const useSubscribeSiteContext = () => useContext(SubscribeSiteContext);
 
 // 購読するサイトの配列のセッター
-const setSubscribeSiteContext = createContext<Dispatch<SetStateAction<Array<SubscribeSite>>>>(() => {});
+const setSubscribeSiteContext = createContext<Dispatch<SetStateAction<SubscribeSiteContextType>>>(() => {});
 export const useSetSubscribeSiteContext = () => useContext(setSubscribeSiteContext);
 
 // プロバイダ
 export const SubscribeSiteProvider = (props: { children: ReactNode }) => {
   const { children } = props;
-  const [siteList, setSiteList] = useState<Array<SubscribeSite>>([]);
+  const [siteList, setSiteList] = useState<SubscribeSiteContextType>(SubscribeSiteContextInit);
 
   return (
     <SubscribeSiteContext.Provider value={siteList}>

@@ -42,7 +42,7 @@ const ResetButtonArea = styled.div`
 
 // メニュー
 export const Menu = () => {
-  const list = useSubscribeSiteContext();
+  const siteContext = useSubscribeSiteContext();
   return (
     <MenuArea>
       <SiteNameArea>
@@ -51,7 +51,7 @@ export const Menu = () => {
       <RSSInputFormArea>
         <SubscribeSiteInputForm />
       </RSSInputFormArea>
-      {list.length === 0 ? null : (
+      {siteContext.SubscribeSiteList.length === 0 ? null : (
         <ResetButtonArea>
           <ResetButton />
         </ResetButtonArea>

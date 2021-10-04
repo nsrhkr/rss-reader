@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { SubscribeSiteItem } from "../SubscribeSiteItem";
+import { SubscribeSiteItem, SubscribeSiteItemSkeleton } from "../SubscribeSiteItem";
 import { useSubscribeSiteContext } from "../../../Contexts/SubscribeSiteContext";
 
 const SubscribeSiteListArea = styled.div`
@@ -13,12 +13,13 @@ const SubscribeSiteListArea = styled.div`
 
 // 購読するサイト一覧
 export const SubscribeSiteList = () => {
-  const siteList = useSubscribeSiteContext();
+  const siteContext = useSubscribeSiteContext();
   return (
     <SubscribeSiteListArea>
-      {siteList.map((item) => {
+      {siteContext.SubscribeSiteList.map((item) => {
         return <SubscribeSiteItem key={item.id} id={item.id} domainName={item.domainName} name={item.name} />;
       })}
+      {siteContext.loading ? <SubscribeSiteItemSkeleton /> : null}
     </SubscribeSiteListArea>
   );
 };

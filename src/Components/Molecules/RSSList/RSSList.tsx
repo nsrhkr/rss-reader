@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 
-import { RSSItem } from "../RSSItem";
+import { RSSItem, RSSItemSkeleton } from "../RSSItem";
 import { useRSSContext } from "../../../Contexts/RSSContext";
 
 const ListArea = styled.div`
@@ -18,10 +18,17 @@ const ListArea = styled.div`
 
 // 配信されたコンテンツ一覧
 export const RSSList = () => {
-  const RSSDataList = useRSSContext();
+  const RSSContext = useRSSContext();
   return (
     <ListArea>
-      {RSSDataList.map((item) => {
+      {RSSContext.loading ? (
+        <>
+          <RSSItemSkeleton />
+          <RSSItemSkeleton />
+          <RSSItemSkeleton />
+        </>
+      ) : null}
+      {RSSContext.RSSItemList.map((item) => {
         return <RSSItem key={uuidv4()} title={item.title} url={item.url} strDate={item.strDate} description={item.description} />;
       })}
     </ListArea>
