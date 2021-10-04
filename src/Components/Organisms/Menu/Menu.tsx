@@ -51,12 +51,12 @@ export const Menu = () => {
       <RSSInputFormArea>
         <SubscribeSiteInputForm />
       </RSSInputFormArea>
-      <SubscribeSiteList />
       {list.length === 0 ? null : (
         <ResetButtonArea>
           <ResetButton />
         </ResetButtonArea>
       )}
+      <SubscribeSiteList />
     </MenuArea>
   );
 };

@@ -8,6 +8,8 @@ const ListArea = styled.div`
   width: 100%;
   max-width: 700px;
   min-width: 400px;
+  padding-bottom: 100px;
+  box-sizing: border-box;
 
   div {
     margin-bottom: 10px;
