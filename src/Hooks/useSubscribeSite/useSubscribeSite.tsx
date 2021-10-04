@@ -41,7 +41,7 @@ export const useSubscribeSite = () => {
 
     if (isRegistered) {
       // すでに登録されている
-      console.log("This site is already registered.");
+      alert("すでに登録されています");
     } else {
       // let newSiteData: SubscribeSite = {} as SubscribeSite;
       let newSiteData: SubscribeSite = {
