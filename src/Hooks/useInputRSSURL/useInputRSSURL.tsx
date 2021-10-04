@@ -34,7 +34,7 @@ export const useInputRSSURL = () => {
       const json = await response.json();
       addSubscribeSite(url, json);
     } catch (error) {
-      console.log(error);
+      alert("RSSの読み込みに失敗しました");
     }
   };
 

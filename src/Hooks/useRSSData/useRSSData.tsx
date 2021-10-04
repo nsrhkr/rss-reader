@@ -25,18 +25,16 @@ export const useRSSData = () => {
           const json: RSS2json = await response.json();
           newList = newList.concat(formatList(siteItem, json));
         } catch (error) {
-          console.log(error);
+          alert("RSSの読み込みに失敗しました");
         }
       })
     );
-    console.log(newList);
     return newList;
   };
 
   // rss2jsonから受け取ったjsonから表示用のRSSデータ配列を作成
   const formatList = (siteItem: SubscribeSite, json: RSS2json) => {
     let newList: Array<RSSItem> = [];
-    console.log(json.items);
     newList = json.items.map((item) => {
       // let item: RSSItem = {} as RSSItem;
       let newItem: RSSItem = {

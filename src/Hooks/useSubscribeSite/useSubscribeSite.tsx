@@ -25,7 +25,7 @@ export const useSubscribeSite = () => {
         getRSSData(list);
       }
     } catch (error) {
-      console.log(error);
+      alert("購読するサイト一覧の読み込みに失敗しました");
     }
   };
 
@@ -54,7 +54,6 @@ export const useSubscribeSite = () => {
       newSiteData.name = json.feed.title;
       newSiteData.domainName = new URL(url).origin;
       newSiteData.url = url;
-      console.log([...siteList, newSiteData]);
       setSiteList([...siteList, newSiteData]);
       mergeRSSList(newSiteData, json);
       localStorage.setItem(SUBSCRIBE_SITE, JSON.stringify([...siteList, newSiteData]));
