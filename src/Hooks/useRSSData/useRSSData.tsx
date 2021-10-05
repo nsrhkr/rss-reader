@@ -1,5 +1,5 @@
 import { fetchRSS, RSS2json } from "../../api";
-import { RSSItem, useRSSContext, useSetRSSContext } from "../../Contexts/RSSContext";
+import { RSSItemType, useRSSContext, useSetRSSContext } from "../../Contexts/RSSContext";
 import { SubscribeSite } from "../../Contexts/SubscribeSiteContext";
 import { dateToString } from "../../utils/date";
 
@@ -24,7 +24,7 @@ export const useRSSData = () => {
 
   // 購読サイト配列を回しながらfetch
   const asyncLoop = async (siteList: SubscribeSite[]) => {
-    let newList: Array<RSSItem> = [];
+    let newList: Array<RSSItemType> = [];
     await Promise.all(
       siteList.map(async (siteItem) => {
         try {
@@ -45,11 +45,12 @@ export const useRSSData = () => {
 
   // rss2jsonから受け取ったjsonから表示用のRSSデータ配列を作成
   const formatList = (siteItem: SubscribeSite, json: RSS2json) => {
-    let newList: Array<RSSItem> = [];
+    let newList: Array<RSSItemType> = [];
     newList = json.items.map((item) => {
       // let item: RSSItem = {} as RSSItem;
-      let newItem: RSSItem = {
+      let newItem: RSSItemType = {
         siteId: "",
+        domainName: "",
         title: "",
         url: "",
         date: new Date(),
@@ -57,6 +58,7 @@ export const useRSSData = () => {
         description: "",
       };
       newItem.siteId = siteItem.id;
+      newItem.domainName = siteItem.domainName;
       newItem.title = item.title;
       newItem.date = new Date(item.pubDate);
       newItem.strDate = dateToString(newItem.date);
@@ -95,7 +97,7 @@ export const useRSSData = () => {
   };
 
   // RSSデータ配列を日付が新しい順にソートする比較関数
-  const compare = (a: RSSItem, b: RSSItem) => {
+  const compare = (a: RSSItemType, b: RSSItemType) => {
     if (a.date < b.date) return 1;
     if (a.date > b.date) return -1;
     return 0;

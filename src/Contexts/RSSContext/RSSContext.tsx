@@ -1,7 +1,8 @@
 import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useState } from "react";
 
-export type RSSItem = {
+export type RSSItemType = {
   siteId: string;
+  domainName: string;
   title: string;
   url: string;
   date: Date;
@@ -10,7 +11,7 @@ export type RSSItem = {
 };
 
 export type RSSContextType = {
-  RSSItemList: Array<RSSItem>;
+  RSSItemList: Array<RSSItemType>;
   loading: boolean;
 };
 

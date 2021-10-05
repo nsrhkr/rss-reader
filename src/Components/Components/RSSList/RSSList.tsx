@@ -29,7 +29,7 @@ export const RSSList = () => {
         </>
       ) : null}
       {RSSContext.RSSItemList.map((item) => {
-        return <RSSItem key={uuidv4()} title={item.title} url={item.url} strDate={item.strDate} description={item.description} />;
+        return <RSSItem key={uuidv4()} RSSItem={item} />;
       })}
     </ListArea>
   );

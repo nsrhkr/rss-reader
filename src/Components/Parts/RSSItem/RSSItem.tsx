@@ -1,11 +1,10 @@
 import styled from "styled-components";
 import Skeleton from "react-loading-skeleton";
 
+import { RSSItemType } from "../../../Contexts/RSSContext";
+
 type RSSItemProps = {
-  title: string;
-  url: string;
-  strDate: string;
-  description: string;
+  RSSItem: RSSItemType;
 };
 
 const ItemArea = styled.div`
@@ -17,8 +16,20 @@ const ItemArea = styled.div`
   border-radius: 4px;
 `;
 
+const TitleArea = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
+const Favicon = styled.img`
+  width: 16px;
+  height: 16px;
+`;
+
 const Title = styled.div`
   width: 100%;
+  box-sizing: border-box;
+  padding-left: 5px;
   font-size: 18px;
   font-weight: bold;
 `;
@@ -55,17 +66,20 @@ const Description = styled.p`
 
 // 配信されたコンテンツ
 export const RSSItem = (props: RSSItemProps) => {
-  const { title, url, strDate, description } = props;
+  const { RSSItem } = props;
   return (
     <ItemArea>
-      <Title>{title}</Title>
+      <TitleArea>
+        <Favicon src={`https://www.google.com/s2/favicons?domain=${RSSItem.domainName}`} />
+        <Title>{RSSItem.title}</Title>
+      </TitleArea>
       <LinkAndDateArea>
         <LinkArea>
-          <a href={url}>元記事</a>
+          <a href={RSSItem.url}>元記事</a>
         </LinkArea>
-        <DateArea>{strDate}</DateArea>
+        <DateArea>{RSSItem.strDate}</DateArea>
       </LinkAndDateArea>
-      <Description>{description}</Description>
+      <Description>{RSSItem.description}</Description>
     </ItemArea>
   );
 };
@@ -74,9 +88,12 @@ export const RSSItem = (props: RSSItemProps) => {
 export const RSSItemSkeleton = () => {
   return (
     <ItemArea>
-      <Title>
-        <Skeleton />
-      </Title>
+      <TitleArea>
+        <Skeleton width={16} height={16} />
+        <Title>
+          <Skeleton />
+        </Title>
+      </TitleArea>
       <LinkAndDateArea>
         <LinkArea>
           <Skeleton width={42} />
@@ -86,7 +103,7 @@ export const RSSItemSkeleton = () => {
         </DateArea>
       </LinkAndDateArea>
       <Description>
-        <Skeleton count={4} />
+        <Skeleton count={2} />
       </Description>
     </ItemArea>
   );
