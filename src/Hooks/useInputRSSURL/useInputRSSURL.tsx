@@ -23,9 +23,14 @@ export const useInputRSSURL = () => {
   const submit: React.FormEventHandler<HTMLFormElement | HTMLInputElement> = (event: React.FormEvent<HTMLFormElement | HTMLInputElement>) => {
     event.preventDefault();
     if (value !== "") {
-      addSite(value);
+      addSite(sanitizing(value));
       setValue("");
     }
+  };
+
+  // 入力された文字列をサニタイジング
+  const sanitizing = (value: string) => {
+    return value.replace(/&/g, "&lt;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#x27;");
   };
 
   // 購読サイトを追加
