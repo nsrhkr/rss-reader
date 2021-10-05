@@ -2,6 +2,8 @@
 
 [rss to json](https://rss2json.com/, "rss to json online converter") API を用いた簡易 RSS リーダー
 
+![demo](https://github.com/nsrhkr/rss-reader/wiki/images/demo.gif)
+
 ## 機能要件
 
 - 画面表示時に local storage に保存している購読対象サイト一覧を元に、購読対象サイト一覧と RSS から取得した更新情報を表示
