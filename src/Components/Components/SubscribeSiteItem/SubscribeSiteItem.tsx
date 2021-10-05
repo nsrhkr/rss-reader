@@ -2,7 +2,7 @@ import { memo } from "react";
 import styled from "styled-components";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
-import { SubscribeSiteDeleteButton } from "../../Atoms/Button/SubscribeSiteDeleteButton";
+import { SubscribeSiteDeleteButton } from "../../Parts/Button/SubscribeSiteDeleteButton";
 
 type RSSItemProps = {
   id: string;

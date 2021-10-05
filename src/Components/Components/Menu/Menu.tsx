@@ -1,10 +1,10 @@
 import styled from "styled-components";
 import { useSubscribeSiteContext } from "../../../Contexts/SubscribeSiteContext";
 
-import { ResetButton } from "../../Atoms/Button/ResetButton";
-import { SiteName } from "../../Atoms/SiteName";
-import { SubscribeSiteInputForm } from "../../Molecules/SubscribeSiteInputForm";
-import { SubscribeSiteList } from "../../Molecules/SubscribeSiteList";
+import { ResetButton } from "../../Parts/Button/ResetButton";
+import { SiteName } from "../../Parts/SiteName";
+import { SubscribeSiteInputForm } from "../../Components/SubscribeSiteInputForm";
+import { SubscribeSiteList } from "../../Components/SubscribeSiteList";
 
 const MenuArea = styled.div`
   background-color: #f2f2f2;

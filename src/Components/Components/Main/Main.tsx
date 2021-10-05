@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import { MainHeader } from "../../Atoms/MainHeader";
-import { RSSList } from "../../Molecules/RSSList";
+import { MainHeader } from "../../Parts/MainHeader";
+import { RSSList } from "../../Components/RSSList";
 
 const MainArea = styled.div`
   width: calc(100% - 350px);

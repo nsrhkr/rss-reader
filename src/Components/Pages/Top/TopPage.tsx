@@ -1,6 +1,14 @@
 import { useLayoutEffect } from "react";
+import styled from "styled-components";
+
 import { useSubscribeSite } from "../../../Hooks/useSubscribeSite";
-import { TopTemplate } from "../../Templates/Top";
+import { Menu } from "../../Components/Menu";
+import { Main } from "../../Components/Main";
+
+const Top = styled.div`
+  display: flex;
+  height: 100%;
+`;
 
 // トップページ
 export const TopPage = () => {
@@ -10,5 +18,10 @@ export const TopPage = () => {
     initSubscribeSite();
   }, []);
 
-  return <TopTemplate />;
+  return (
+    <Top>
+      <Menu />
+      <Main />
+    </Top>
+  );
 };

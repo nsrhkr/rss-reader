@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 
-import { RSSItem, RSSItemSkeleton } from "../RSSItem";
+import { RSSItem, RSSItemSkeleton } from "../../Parts/RSSItem";
 import { useRSSContext } from "../../../Contexts/RSSContext";
 
 const ListArea = styled.div`

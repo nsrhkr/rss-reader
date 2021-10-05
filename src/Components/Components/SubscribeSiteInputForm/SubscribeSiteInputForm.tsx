@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import { SubscribeSiteAddButton } from "../../Atoms/Button/SubscribeSiteAddButton";
-import { SubscribeSiteInput } from "../../Atoms/Input/SubscribeSiteInput";
+import { SubscribeSiteAddButton } from "../../Parts/Button/SubscribeSiteAddButton";
+import { SubscribeSiteInput } from "../../Parts/Input/SubscribeSiteInput";
 import { useInputRSSURL } from "../../../Hooks/useInputRSSURL";
 
 const SubscribeSiteInputFormArea = styled.form`
