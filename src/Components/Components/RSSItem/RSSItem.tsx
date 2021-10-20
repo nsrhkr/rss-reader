@@ -51,6 +51,10 @@ const Description = styled.p`
   line-height: 1.5em;
   text-overflow: ellipsis;
   color: #696969;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
 `;
 
 // 配信されたコンテンツ
