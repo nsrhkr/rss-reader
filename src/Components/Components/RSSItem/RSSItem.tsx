@@ -79,7 +79,7 @@ export const RSSItemSkeleton = () => {
   return (
     <ItemArea>
       <Title>
-        <Skeleton />
+        <Skeleton width={300} />
       </Title>
       <LinkAndDateArea>
         <LinkArea>
