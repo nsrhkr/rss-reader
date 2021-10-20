@@ -90,7 +90,7 @@ export const RSSItemSkeleton = () => {
         </DateArea>
       </LinkAndDateArea>
       <Description>
-        <Skeleton count={4} />
+        <Skeleton count={3} />
       </Description>
     </ItemArea>
   );
