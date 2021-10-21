@@ -3,13 +3,14 @@ import { v4 as uuidv4 } from "uuid";
 import { RSS2json } from "../../api";
 import { useRSSData } from "../useRSSData";
 import { SubscribeSite, SubscribeSiteContextInit, useSubscribeSiteContext, useSetSubscribeSiteContext } from "../../Contexts/SubscribeSiteContext";
-import { RSSContextInit, useSetRSSContext } from "../../Contexts/RSSContext";
+import { RSSContextInit, useRSSContext, useSetRSSContext } from "../../Contexts/RSSContext";
 
 // ローカルストレージに持つキー名
 const SUBSCRIBE_SITE = "subscribeSite";
 
 // 購読サイト一覧のフック
 export const useSubscribeSite = () => {
+  const RSSList = useRSSContext();
   const siteContext = useSubscribeSiteContext();
   const setSiteContext = useSetSubscribeSiteContext();
   const setRSSContext = useSetRSSContext();
@@ -44,6 +45,8 @@ export const useSubscribeSite = () => {
 
     if (isRegistered) {
       // すでに登録されている
+      setRSSContext({ RSSItemList: RSSList.RSSItemList, loading: false });
+      setSiteContext({ SubscribeSiteList: siteContext.SubscribeSiteList, loading: false });
       alert("すでに登録されています");
     } else {
       // let newSiteData: SubscribeSite = {} as SubscribeSite;
