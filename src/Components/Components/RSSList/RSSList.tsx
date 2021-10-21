@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 
-import { RSSItem, RSSItemSkeleton } from "../../Parts/RSSItem";
+import { RSSItem, RSSItemSkeleton } from "../RSSItem";
 import { useRSSContext } from "../../../Contexts/RSSContext";
 
 const ListArea = styled.div`
@@ -29,7 +29,7 @@ export const RSSList = () => {
         </>
       ) : null}
       {RSSContext.RSSItemList.map((item) => {
-        return <RSSItem key={uuidv4()} RSSItem={item} />;
+        return <RSSItem key={uuidv4()} {...item} />;
       })}
     </ListArea>
   );

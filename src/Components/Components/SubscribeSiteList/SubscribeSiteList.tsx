@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { SubscribeSiteItem, SubscribeSiteItemSkeleton } from "../../Parts/SubscribeSiteItem";
+import { SubscribeSiteItem, SubscribeSiteItemSkeleton } from "../SubscribeSiteItem";
 import { useSubscribeSiteContext } from "../../../Contexts/SubscribeSiteContext";
 
 const SubscribeSiteListArea = styled.div`
